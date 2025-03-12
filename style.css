@@ -9,3 +9,103 @@ Author: Mohammad zolfalizadeh
 Author URI: Https://porteqhal.ir
 
 */
+
+/* استایل‌های کلی هدر */
+.site-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-logo img {
+    max-height: 50px;
+}
+
+/* استایل‌های منو */
+.primary-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.primary-menu li {
+    margin-left: 20px;
+}
+
+.primary-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* استایل‌های دکمه همبرگر */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    position: relative;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+}
+
+.hamburger-icon::before {
+    top: -8px;
+}
+
+.hamburger-icon::after {
+    top: 8px;
+}
+
+/* استایل‌های ریسپانسیو */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    .primary-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 70px;
+        left: 0;
+    }
+
+    .primary-menu li {
+        margin: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .primary-menu.active {
+        display: flex;
+    }
+}
