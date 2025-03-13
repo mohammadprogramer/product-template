@@ -2,15 +2,38 @@
 
 require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 
-function my_theme_enqueue_scripts() {
-    wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/script.js', array(), null, true);
+
+
+function my_theme_enqueue_custom_script() {
+    wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/script.js', array('jquery'), null, true);
 }
-add_action('wp_enqueue_scripts', 'my_theme_enqueue_scripts');
+add_action('wp_enqueue_scripts', 'my_theme_enqueue_custom_script');
+
 
 function my_theme_enqueue_styles() {
     wp_enqueue_style('my-theme-style', get_stylesheet_uri());
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
+
+
+
+function my_theme_enqueue_scripts() {
+    // فراخوانی فایل CSS بوت‌استرپ
+    wp_enqueue_style('bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+
+    // فراخوانی فایل JavaScript بوت‌استرپ
+    wp_enqueue_script('bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), null, true);
+
+    // فراخوانی jQuery
+    wp_enqueue_script('jquery', '//code.jquery.com/jquery-1.11.1.min.js', array(), null, true);
+
+    // فراخوانی فایل CSS Font Awesome
+    wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+}
+add_action('wp_enqueue_scripts', 'my_theme_enqueue_scripts');
+
+
+
 
 function my_theme_register_menus() {
     register_nav_menus(array(
