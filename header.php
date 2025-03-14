@@ -12,6 +12,9 @@
 </head>
 <body <?php body_class(); ?>>
     <?php
-    // فراخوانی تمپلیت هدر سفارشی
-    get_template_part('header-custom');
+    // بررسی آیا المنتور از هدر استفاده می‌کند
+    if (!function_exists('elementor_theme_do_location') || !elementor_theme_do_location('header')) {
+        // اگر المنتور هدر نداشت، هدر سفارشی را فراخوانی کنید
+        get_template_part('header-custom');
+    }
     ?>
