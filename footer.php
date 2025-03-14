@@ -1,13 +1,16 @@
 <?php
 /**
- * The template for displaying the footer.
- *
- * Contains the closing of the #content div and all content after.
+ * The footer for our theme
  */
 ?>
+    <?php
+    // بررسی آیا المنتور از فوتر استفاده می‌کند
+    if (!function_exists('elementor_theme_do_location') || !elementor_theme_do_location('footer')) {
+        // اگر المنتور فوتر نداشت، فوتر سفارشی را فراخوانی کنید
+        get_template_part('footer-custom');
+    }
+    ?>
 
-</div><!-- #content -->
-
-<?php
-// فراخوانی فوتر سفارشی
-get_template_part('footer-custom');
+<?php wp_footer(); ?>
+</body>
+</html>
