@@ -24,21 +24,38 @@ article.post:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 /* استایل‌های برای هدر هر مقاله */
-.entry-header {
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+
+
+.featured-image-container {
+    width: 100%;
+    height: 400px; /* ارتفاع تصویر شاخص */
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px; /* فاصله بین تصویر و عنوان */
 }
 
+.featured-image-container .featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* تصویر را به خوبی پوشش می‌دهد */
+}
+
+entry-header {
+    padding: 20px;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    margin-top: -100px; /* حرکت عنوان به سمت بالا */
+}
 /* استایل‌های برای عنوان مقاله */
 .entry-title {
     font-size: 36px;
-    color: #2c3e50;
+    color: #fff; /* رنگ متن سفید برای تضاد با تصویر */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* سایه متن برای خوانایی بهتر */
     margin: 0;
-    font-weight: 800;
-    line-height: 1.2;
-    font-family: 'Poppins', sans-serif;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    text-align: right;
 }
 
 .entry-title a {
@@ -52,10 +69,11 @@ article.post:hover {
 }
 /* استایل‌های برای محتوای مقاله */
 .entry-content {
-    font-size: 18px;
-    line-height: 1.8;
-    color: #555;
-    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    text-align: right;
 }
 
 .entry-content p {
@@ -117,6 +135,32 @@ article.post:hover {
     counter-reset: item;
 }
 
+
+.entry-content h1 {
+   
+    text-align: right;
+}
+.entry-content h2 {
+   
+    text-align: right;
+}
+
+.entry-content h3 {
+   
+    text-align: right;
+}
+.entry-content h4 {
+   
+    text-align: right;
+}
+.entry-content h5 {
+   
+    text-align: right;
+}
+.entry-content h6 {
+   
+    text-align: right;
+}
 .entry-content ol li::before {
     content: counter(item) ".";
     counter-increment: item;
@@ -144,3 +188,6 @@ article.post:hover {
         padding-left: 20px;
     }
 }
+/* استایل‌های برای تصویر شاخص فیکس */
+
+/* استایل‌های برای محتوای مقاله */
