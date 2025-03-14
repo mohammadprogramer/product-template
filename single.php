@@ -2,13 +2,6 @@
 get_header(); // فراخوانی هدر
 ?>
 
-<section class="custom-section">
-    <div class="container">
-        <h2>این یک بخش سفارشی است</h2>
-        <p>این محتوا بین هدر و فوتر نمایش داده می‌شود.</p>
-    </div>
-</section>
-
 <main id="primary" class="site-main">
     <?php
     while (have_posts()) :
