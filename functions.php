@@ -11,9 +11,20 @@ add_action('wp_enqueue_scripts', 'my_theme_enqueue_custom_script');
 
 
 function my_theme_enqueue_styles() {
+    // فراخوانی فایل CSS اصلی تم
     wp_enqueue_style('my-theme-style', get_stylesheet_uri());
+
+    // فراخوانی فایل‌های CSS اضافی (اگر دارید)
+    wp_enqueue_style('custom-style', get_template_directory_uri() . '/css/custom.css');
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
+
+
+
+function my_theme_enqueue_fonts() {
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Open+Sans:wght@400;700&display=swap');
+}
+add_action('wp_enqueue_scripts', 'my_theme_enqueue_fonts');
 
 
 
