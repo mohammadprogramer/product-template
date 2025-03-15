@@ -21,12 +21,20 @@ get_header(); // فراخوانی هدر
 
             <div class="entry-content">
                 <?php the_content(); ?>
+
+                <?php
+// بررسی آیا نظرات باز هستند و آیا نظری وجود دارد
+             if (comments_open() || get_comments_number()) :
+                comments_template();
+                endif;
+                    ?>
             </div>
         </article>
     <?php
     endwhile;
     ?>
 </main>
+
 
 <?php
 get_footer(); // فراخوانی فوتر
