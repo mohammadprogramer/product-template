@@ -165,3 +165,111 @@ li {
     background: -webkit-linear-gradient(left, #54d400 48%, #1b1e21 48%);
     background: linear-gradient(45deg, #54d400 48%, #1b1e21 48%);
 }
+/*استایل نظرات کاربر*/
+/* استایل‌های کلی برای بخش نظرات */
+.comments-area {
+  margin-top: 40px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comments-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-list li {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.comment-author {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.comment-author .avatar {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-author .fn {
+  font-weight: bold;
+  color: #333;
+}
+
+.comment-metadata {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.comment-content {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.comment-reply-link {
+  color: #3498db;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.comment-reply-link:hover {
+  text-decoration: underline;
+}
+
+/* استایل‌های برای فرم ارسال نظر */
+.comment-respond {
+  margin-top: 40px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment-form textarea,
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.comment-form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.comment-form .submit {
+  background: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.comment-form .submit:hover {
+  background: #2980b9;
+}
