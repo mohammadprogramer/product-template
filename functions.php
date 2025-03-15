@@ -27,6 +27,12 @@ function my_theme_enqueue_fonts() {
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_fonts');
 
 
+function my_theme_support_elementor() {
+    // پشتیبانی از المنتور
+    add_theme_support('elementor');
+}
+add_action('after_setup_theme', 'my_theme_support_elementor');
+
 
 function my_theme_enqueue_scripts() {
     // فراخوانی فایل CSS بوت‌استرپ
@@ -121,3 +127,27 @@ function my_theme_custom_editor_buttons_2($buttons) {
     return $buttons;
 }
 add_filter('mce_buttons_2', 'my_theme_custom_editor_buttons_2');
+
+
+function custom_comment_template($comment, $args, $depth) {
+    $GLOBALS['comment'] = $comment;
+    ?>
+    <div class="be-comment">
+        <div class="be-img-comment">	
+            <?php echo get_avatar($comment, 60, '', '', array('class' => 'be-ava-comment')); ?>
+        </div>
+        <div class="be-comment-content">
+            <span class="be-comment-name">
+                <?php echo get_comment_author_link(); ?>
+            </span>
+            <span class="be-comment-time">
+                <i class="fa fa-clock-o"></i>
+                <?php printf(__('%1$s at %2$s'), get_comment_date(), get_comment_time()); ?>
+            </span>
+            <p class="be-comment-text">
+                <?php comment_text(); ?>
+            </p>
+        </div>
+    </div>
+    <?php
+}
