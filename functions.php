@@ -12,7 +12,7 @@ function my_theme_enqueue_styles() {
     wp_enqueue_style('my-theme-style', get_stylesheet_uri());
 
     // فراخوانی فایل‌های CSS اضافی (اگر دارید)
-    wp_enqueue_style('custom-style', get_template_directory_uri() . '/css/custom.css');
+    wp_enqueue_style('custom-style', get_template_directory_uri() . '/css/custom.css', array(), null, 'all');
 
     // افزودن فونت Poppins
     wp_enqueue_style(
@@ -38,13 +38,31 @@ function my_theme_enqueue_styles() {
         '5.15.4'
     );
 }
-add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
+add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles', 20); // اولویت 20
 
 function my_theme_support_elementor() {
     // پشتیبانی از المنتور
     add_theme_support('elementor');
 }
 add_action('after_setup_theme', 'my_theme_support_elementor');
+
+add_action('wp_enqueue_scripts', function() {
+    wp_dequeue_style('elementor-frontend'); // غیرفعال کردن استایل‌های پیش‌فرض المنتور
+}, 20);
+
+
+
+function my_theme_custom_styles() {
+    $custom_css = "
+        .page-login .login-form {
+            background-color: rgba(255, 255, 255, 0.13) !important;
+        }
+    ";
+    wp_add_inline_style('elementor-frontend', $custom_css);
+}
+add_action('wp_enqueue_scripts', 'my_theme_custom_styles', 30);
+
+
 
 function my_theme_enqueue_scripts() {
     // فراخوانی فایل CSS بوت‌استرپ
