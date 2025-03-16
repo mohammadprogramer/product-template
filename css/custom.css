@@ -295,7 +295,7 @@ article.post:hover {
     background: #2980b9;
 }
 
-/* استایل‌های کلی برای صفحه ورود */
+/* استایل کلی صفحه ورود */
 body.page-login {
     background-color: #080710;
     margin: 0;
@@ -307,6 +307,7 @@ body.page-login {
     font-family: 'Poppins', sans-serif;
 }
 
+/* پس‌زمینه دایره‌ای */
 .page-login .background {
     width: 430px;
     height: 520px;
@@ -323,20 +324,23 @@ body.page-login {
     border-radius: 50%;
 }
 
+/* دایره آبی */
 .page-login .shape:first-child {
     background: linear-gradient(#1845ad, #23a2f6);
     left: -80px;
     top: -80px;
 }
 
+/* دایره نارنجی */
 .page-login .shape:last-child {
     background: linear-gradient(to right, #ff512f, #f09819);
     right: -30px;
     bottom: -80px;
 }
 
+/* استایل فرم ورود */
 .page-login .login-form {
-    height: 520px;
+    height: auto;
     width: 400px;
     background-color: rgba(255, 255, 255, 0.13);
     position: absolute;
@@ -347,9 +351,10 @@ body.page-login {
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-    padding: 50px 35px;
+    padding: 40px 35px;
 }
 
+/* استایل عناصر داخل فرم */
 .page-login .login-form * {
     color: #ffffff;
     letter-spacing: 0.5px;
@@ -357,38 +362,46 @@ body.page-login {
     border: none;
 }
 
+/* عنوان فرم */
 .page-login .login-form h3 {
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
+    margin-bottom: 30px;
 }
 
+/* استایل لیبل‌ها */
 .page-login .login-form label {
     display: block;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 16px;
     font-weight: 500;
 }
 
+/* استایل فیلدهای ورودی */
 .page-login .login-form input {
     display: block;
     height: 50px;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.07);
-    border-radius: 3px;
-    padding: 0 10px;
+    border-radius: 5px;
+    padding: 0 15px;
     margin-top: 8px;
     font-size: 14px;
     font-weight: 300;
+    color: #ffffff;
 }
 
-.page-login .login-form ::placeholder {
+/* استایل placeholder فیلدهای ورودی */
+.page-login .login-form input::placeholder {
     color: #e5e5e5;
+    opacity: 0.7;
 }
 
+/* استایل دکمه ورود */
 .page-login .login-form button {
-    margin-top: 50px;
+    margin-top: 30px;
     width: 100%;
     background-color: #ffffff;
     color: #080710;
@@ -397,21 +410,29 @@ body.page-login {
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
+.page-login .login-form button:hover {
+    background-color: #f0f0f0;
+}
+
+/* استایل بخش شبکه‌های اجتماعی */
 .page-login .social {
     margin-top: 30px;
     display: flex;
+    justify-content: space-between;
 }
 
 .page-login .social div {
-    background: red;
-    width: 150px;
-    border-radius: 3px;
-    padding: 5px 10px 10px 5px;
+    width: 48%;
+    border-radius: 5px;
+    padding: 10px;
     background-color: rgba(255, 255, 255, 0.27);
     color: #eaf0fb;
     text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .page-login .social div:hover {
@@ -419,9 +440,32 @@ body.page-login {
 }
 
 .page-login .social .fb {
-    margin-left: 25px;
+    margin-left: 0;
 }
 
 .page-login .social i {
-    margin-right: 4px;
+    margin-right: 8px;
+}
+
+/* تنظیمات رسپانسیو */
+@media (max-width: 480px) {
+    .page-login .login-form {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .page-login .background {
+        width: 100%;
+        height: 100%;
+    }
+
+    .page-login .shape:first-child {
+        left: -50px;
+        top: -50px;
+    }
+
+    .page-login .shape:last-child {
+        right: -20px;
+        bottom: -50px;
+    }
 }
