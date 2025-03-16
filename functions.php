@@ -37,8 +37,15 @@ function my_theme_enqueue_styles() {
         array(),
         '5.15.4'
     );
+
+    // استایل‌های اختصاصی برای هوم پیج‌ها
+    if (is_page_template('homepage-1.php')) {
+        wp_enqueue_style('homepage-1-style', get_template_directory_uri() . '/css/homepage-1.css');
+    } elseif (is_page_template('homepage-2.php')) {
+        wp_enqueue_style('homepage-2-style', get_template_directory_uri() . '/css/homepage-2.css');
+    }
 }
-add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles', 20); // اولویت 20
+add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles', 20);
 
 function my_theme_support_elementor() {
     // پشتیبانی از المنتور
@@ -47,10 +54,35 @@ function my_theme_support_elementor() {
 add_action('after_setup_theme', 'my_theme_support_elementor');
 
 add_action('wp_enqueue_scripts', function() {
-    wp_dequeue_style('elementor-frontend'); // غیرفعال کردن استایل‌های پیش‌فرض المنتور
+    if (!is_admin()) { // فقط در بخش frontend
+        wp_dequeue_style('elementor-frontend'); // غیرفعال کردن استایل‌های پیش‌فرض المنتور
+    }
 }, 20);
 
+function my_theme_body_classes($classes) {
+    if (is_page('homepage-1')) {
+        $classes[] = 'homepage-1';
+    } elseif (is_page('homepage-2')) {
+        $classes[] = 'homepage-2';
+    }
+    return $classes;
+}
+add_filter('body_class', 'my_theme_body_classes');
 
+function create_custom_post_type() {
+    register_post_type('homepage',
+        array(
+            'labels' => array(
+                'name' => __('Homepages'),
+                'singular_name' => __('Homepage')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports' => array('title', 'editor', 'thumbnail'),
+        )
+    );
+}
+add_action('init', 'create_custom_post_type');
 
 function my_theme_custom_styles() {
     $custom_css = "
@@ -58,21 +90,19 @@ function my_theme_custom_styles() {
             background-color: rgba(255, 255, 255, 0.13) !important;
         }
     ";
-    wp_add_inline_style('elementor-frontend', $custom_css);
+    wp_add_inline_style('my-theme-style', $custom_css); // اضافه کردن به فایل استایل اصلی
 }
 add_action('wp_enqueue_scripts', 'my_theme_custom_styles', 30);
 
-
-
 function my_theme_enqueue_scripts() {
-    // فراخوانی فایل CSS بوت‌استرپ
-    wp_enqueue_style('bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+    // فراخوانی jQuery (از نسخه پیش‌فرض وردپرس استفاده کنید)
+    wp_enqueue_script('jquery');
 
     // فراخوانی فایل JavaScript بوت‌استرپ
     wp_enqueue_script('bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), null, true);
 
-    // فراخوانی jQuery
-    wp_enqueue_script('jquery', '//code.jquery.com/jquery-1.11.1.min.js', array(), null, true);
+    // فراخوانی فایل CSS بوت‌استرپ
+    wp_enqueue_style('bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
 
     // فراخوانی فایل CSS Font Awesome
     wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
