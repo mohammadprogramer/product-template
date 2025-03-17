@@ -43,11 +43,9 @@ get_header(); // فراخوانی هدر
                         <a href="<?php echo wp_lostpassword_url(); ?>">رمز عبور خود را فراموش کرده‌اید؟</a>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
     </div>
 </main>
 
-<?php
-get_footer(); // فراخوانی فوتر
-?>
