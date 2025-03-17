@@ -200,3 +200,51 @@ function custom_comment_template($comment, $args, $depth) {
     </div>
     <?php
 }
+
+/*فرم ثبت نام*/
+function custom_user_registration() {
+    if (isset($_POST['register_submit'])) {
+        $username = sanitize_user($_POST['username']);
+        $email = sanitize_email($_POST['email']);
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+
+        // بررسی پر بودن فیلدها
+        if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
+            wp_redirect(home_url('/register/?register=empty'));
+            exit;
+        }
+
+        // بررسی تطابق رمز عبور
+        if ($password !== $confirm_password) {
+            wp_redirect(home_url('/register/?register=password_mismatch'));
+            exit;
+        }
+
+        // بررسی وجود نام کاربری
+        if (username_exists($username)) {
+            wp_redirect(home_url('/register/?register=username_exists'));
+            exit;
+        }
+
+        // بررسی وجود ایمیل
+        if (email_exists($email)) {
+            wp_redirect(home_url('/register/?register=email_exists'));
+            exit;
+        }
+
+        // ایجاد کاربر جدید
+        $user_id = wp_create_user($username, $password, $email);
+
+        if (is_wp_error($user_id)) {
+            wp_redirect(home_url('/register/?register=error'));
+            exit;
+        } else {
+            // ورود خودکار کاربر پس از ثبت نام
+            wp_set_auth_cookie($user_id);
+            wp_redirect(home_url('/register/?register=success'));
+            exit;
+        }
+    }
+}
+add_action('init', 'custom_user_registration');
