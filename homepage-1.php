@@ -2,9 +2,9 @@
 /**
  * Template Name: Homepage-1
  */
-get_header('home'); // فراخوانی هدر اختصاصی
+get_header(); // فراخوانی هدر اختصاصی
 ?>
-
+ <main id="main-content" class="main-content">
 <!-- محتوای هوم پیج -->
 <main class="flex-shrink-0">
     <!-- Hero Section -->
@@ -68,7 +68,7 @@ get_header('home'); // فراخوانی هدر اختصاصی
         </div>
     </section>
 </main>
-
+</main>
 <?php
 get_footer('home'); // فراخوانی فوتر اختصاصی
 ?>
