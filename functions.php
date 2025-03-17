@@ -116,15 +116,6 @@ function my_theme_register_menus() {
 }
 add_action('init', 'my_theme_register_menus');
 
-function my_theme_add_woocommerce_support() {
-    add_theme_support('woocommerce');
-}
-add_action('after_setup_theme', 'my_theme_add_woocommerce_support');
-
-function my_theme_enqueue_woocommerce_styles() {
-    wp_enqueue_style('woocommerce-style', get_template_directory_uri() . '/woocommerce.css');
-}
-add_action('wp_enqueue_scripts', 'my_theme_enqueue_woocommerce_styles');
 
 function custom_product_price($price, $product) {
     return '<span class="custom-price">' . $price . '</span>';
@@ -248,3 +239,45 @@ function custom_user_registration() {
     }
 }
 add_action('init', 'custom_user_registration');
+
+function custom_user_login() {
+    if (isset($_POST['login_submit'])) {
+        $username = sanitize_user($_POST['username']);
+        $password = $_POST['password'];
+
+        // بررسی پر بودن فیلدها
+        if (empty($username) || empty($password)) {
+            wp_redirect(home_url('/login/?login=empty'));
+            exit;
+        }
+
+        // احراز هویت کاربر
+        $user = wp_signon(array(
+            'user_login' => $username,
+            'user_password' => $password,
+            'remember' => true,
+        ));
+
+        if (is_wp_error($user)) {
+            wp_redirect(home_url('/login/?login=failed'));
+            exit;
+        } else {
+            // هدایت کاربر به صفحه مشخص پس از ورود
+            wp_redirect(home_url('/'));
+            exit;
+        }
+    }
+}
+add_action('init', 'custom_user_login');
+
+
+
+function my_theme_disable_jquery_migrate($scripts) {
+    if (!is_admin() && !empty($scripts->registered['jquery'])) {
+        $scripts->registered['jquery']->deps = array_diff(
+            $scripts->registered['jquery']->deps,
+            array('jquery-migrate')
+        );
+    }
+}
+add_action('wp_default_scripts', 'my_theme_disable_jquery_migrate');
