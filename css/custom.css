@@ -469,3 +469,29 @@ body.page-login {
         bottom: -50px;
     }
 }
+
+
+/* استایل‌های کلی برای هدر */
+.header-home {
+    position: fixed; /* هدر ثابت در بالای صفحه */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* اطمینان از قرارگیری هدر بالای سایر عناصر */
+    background-color: #fff; /* رنگ پس‌زمینه هدر */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* سایه برای هدر */
+}
+
+/* استایل‌های کلی برای محتوای اصلی */
+.main-content {
+    margin-top: 80px; /* فاصله از هدر */
+    padding: 20px;
+}
+
+/* استایل‌های کلی برای فوتر */
+.footer-home {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
