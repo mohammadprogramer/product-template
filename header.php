@@ -11,6 +11,10 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+
+
+<header id="header-home" class="header-home">
+
     <?php
     // بررسی آیا المنتور از هدر استفاده می‌کند
     if (!function_exists('elementor_theme_do_location') || !elementor_theme_do_location('header')) {
@@ -18,3 +22,5 @@
         get_template_part('header-custom');
     }
     ?>
+
+</header>
