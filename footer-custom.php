@@ -1,8 +1,4 @@
-<?php
-/**
- * The template for displaying the footer.
- */
-?>
+
 
 <footer class="text-center text-lg-start text-white" style="background-color: #1c2331">
     <!-- Section: Social media -->
@@ -123,7 +119,5 @@
     <!-- Copyright -->
 </footer>
 <!-- Footer -->
+</div>
 
-<?php wp_footer(); ?>
-</body>
-</html>
